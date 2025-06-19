@@ -1,0 +1,71 @@
+<div class="login-page-container">
+  <div class="login-card">
+
+    <!-- Illustration on the LEFT now -->
+    <div class="illustration-panel">
+      <div class="illustration-content">
+        <h2>Smart Deals.<br />Smarter Shopping.<br />Only at E-Mart.</h2>
+        <p>Explore a wide range of electronics at unbeatable prices. Seamless management starts here.</p>
+        <img
+          src="https://img.freepik.com/premium-vector/young-caucasian-man-pushing-empty-supermarket-trolley_1324825-10592.jpg"
+          alt="Electronics Mart Shopper Illustration">
+      </div>
+    </div>
+
+    <!-- Login Form on the RIGHT now -->
+    <div class="form-panel">
+      <div class="form-content">
+        <div class="logo-header">
+          <mat-icon color="primary">shopping_cart</mat-icon>
+          <h2>E-Mart</h2>
+        </div>
+
+        <div class="welcome-text">
+          <p>Please login to your account</p>
+          <h3>Welcome Back</h3>
+        </div>
+
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Email address</mat-label>
+            <input matInput formControlName="email" type="email" required>
+            <mat-error *ngIf="loginForm.get('email')?.hasError('required')">Email is required</mat-error>
+            <mat-error *ngIf="loginForm.get('email')?.hasError('email')">Enter a valid email</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Password</mat-label>
+            <input matInput type="password" formControlName="password" required>
+            <mat-error *ngIf="loginForm.get('password')?.hasError('required')">Password is required</mat-error>
+            <mat-error *ngIf="loginForm.get('password')?.hasError('minlength')">Minimum 6 characters</mat-error>
+          </mat-form-field>
+
+          <div class="options-and-button">
+            <a class="forgot-password-link" href="javascript:void(0)">Forgot Password?</a>
+            <button mat-raised-button color="primary"
+              class="login-button"
+              type="submit"
+              [disabled]="loginForm.invalid || isLoading">
+              <span *ngIf="!isLoading">Login</span>
+              <mat-spinner *ngIf="isLoading" diameter="24"></mat-spinner>
+            </button>
+          </div>
+        </form>
+
+        <div class="social-login-buttons">
+          <button mat-stroked-button class="social-button">
+            <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google logo">
+          </button>
+          <button mat-stroked-button class="social-button">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/2021_Facebook_icon.svg" alt="Facebook logo">
+          </button>
+        </div>
+
+        <div class="signup-link">
+          <p>Don't have an account? <a (click)="goToSignup()">Signup</a></p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
