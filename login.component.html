@@ -1,68 +1,85 @@
 <div class="login-page-container">
   <div class="login-card">
 
-    <!-- Illustration on the LEFT now -->
+    <!-- 🖼 Illustration Panel -->
     <div class="illustration-panel">
       <div class="illustration-content">
-        <h2>Smart Deals.<br />Smarter Shopping.<br />Only at E-Mart.</h2>
-        <p>Explore a wide range of electronics at unbeatable prices. Seamless management starts here.</p>
+        <h2>Smart Deals.<br />Smarter Shopping.<br />Only at E-Kart.</h2>
+        <p>Explore a wide range of electronics at unbeatable prices.</p>
         <img
           src="https://img.freepik.com/premium-vector/young-caucasian-man-pushing-empty-supermarket-trolley_1324825-10592.jpg"
-          alt="Electronics Mart Shopper Illustration">
+          alt="Electronics Mart Shopper Illustration" />
       </div>
     </div>
 
-    <!-- Login Form on the RIGHT now -->
+    <!-- 🔐 Login Form Panel -->
     <div class="form-panel">
       <div class="form-content">
+
+        <!-- Logo -->
         <div class="logo-header">
           <mat-icon color="primary">shopping_cart</mat-icon>
-          <h2>E-Mart</h2>
+          <h2>E-Kart</h2>
         </div>
 
+        <!-- Welcome -->
         <div class="welcome-text">
-          <p>Please login to your account</p>
           <h3>Welcome Back</h3>
+          <p>Please login to your account</p>
         </div>
 
+        <!-- Login Form Starts -->
         <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-          <mat-form-field appearance="outline" class="full-width">
+
+          <!-- 📩 Email Input -->
+          <mat-form-field appearance="outline" class="form-field">
             <mat-label>Email address</mat-label>
-            <input matInput formControlName="email" type="email" required>
+            <input matInput formControlName="email" type="email" required />
             <mat-error *ngIf="loginForm.get('email')?.hasError('required')">Email is required</mat-error>
             <mat-error *ngIf="loginForm.get('email')?.hasError('email')">Enter a valid email</mat-error>
           </mat-form-field>
 
-          <mat-form-field appearance="outline" class="full-width">
+          <!-- 🔐 Password Input -->
+          <mat-form-field appearance="outline" class="form-field">
             <mat-label>Password</mat-label>
-            <input matInput type="password" formControlName="password" required>
+            <input matInput type="password" formControlName="password" required />
             <mat-error *ngIf="loginForm.get('password')?.hasError('required')">Password is required</mat-error>
             <mat-error *ngIf="loginForm.get('password')?.hasError('minlength')">Minimum 6 characters</mat-error>
           </mat-form-field>
 
-          <div class="options-and-button">
+          <!-- 🔓 Login Button -->
+          <button
+            mat-raised-button
+            color="primary"
+            class="login-button"
+            type="submit"
+            [disabled]="loginForm.invalid || isLoading">
+            <span *ngIf="!isLoading">Login</span>
+            <mat-spinner *ngIf="isLoading" diameter="24"></mat-spinner>
+          </button>
+
+          <!-- Forgot Password Link -->
+          <div class="forgot-password-wrapper">
             <a class="forgot-password-link" href="javascript:void(0)">Forgot Password?</a>
-            <button mat-raised-button color="primary"
-              class="login-button"
-              type="submit"
-              [disabled]="loginForm.invalid || isLoading">
-              <span *ngIf="!isLoading">Login</span>
-              <mat-spinner *ngIf="isLoading" diameter="24"></mat-spinner>
-            </button>
           </div>
         </form>
 
-        <div class="social-login-buttons">
-          <button mat-stroked-button class="social-button">
-            <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google logo">
+        <!-- 🔗 Social Login -->
+        <div class="social-login-full">
+          <button mat-stroked-button class="social-btn google-btn">
+            <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google logo" />
+            Sign in with Google
           </button>
-          <button mat-stroked-button class="social-button">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/2021_Facebook_icon.svg" alt="Facebook logo">
+
+          <button mat-stroked-button class="social-btn facebook-btn">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/2021_Facebook_icon.svg" alt="Facebook logo" />
+            Sign in with Facebook
           </button>
         </div>
 
+        <!-- Redirect to Signup -->
         <div class="signup-link">
-          <p>Don't have an account? <a (click)="goToSignup()">Signup</a></p>
+          <p>Don't have an account? <a (click)="goToSignup()">Create Account</a></p>
         </div>
       </div>
     </div>
