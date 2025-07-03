@@ -51,8 +51,8 @@ export class RegisterComponent {
     if (this.registerForm.invalid || this.isLoading) {
       return;
     }
-    this.isLoading = true;
-
+    this.isLoading = true; // make this true 
+    
     const { name, email, password } = this.registerForm.value;
     // Sends the data to register in AuthService 
     this.authService.register(name, email, password)
