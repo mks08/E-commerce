@@ -1,0 +1,71 @@
+<div class="register-page-wrapper">
+  <div class="register-card">
+
+    <div class="illustration-panel">
+      <div class="illustration-content">
+        <h2>Start Your Journey with M-Kart</h2>
+        <p>Create an account to save your favorite items, get exclusive deals, and enjoy a faster checkout experience.</p>
+        <img
+          src="https://c7.alamy.com/comp/W5HBMY/online-shopping-e-payments-and-express-delivery-network-of-isometric-vector-concepts-W5HBMY.jpg"
+          alt="Shopping and Delivery Illustration" />
+      </div>
+    </div>
+
+    <div class="form-panel">
+      <div class="form-content">
+
+        <div class="logo-header">
+          <mat-icon color="primary">shopping_cart</mat-icon>
+          <h2>M-Kart</h2>
+        </div>
+
+        <div class="welcome-text">
+          <h3>Create Your Account</h3>
+          <p>It's free and only takes a minute.</p>
+        </div>
+
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+          <mat-form-field appearance="outline" class="form-field">
+            <mat-label>Full Name</mat-label>
+            <input matInput formControlName="name" required />
+            <mat-error *ngIf="registerForm.get('name')?.hasError('required')">Full Name is required</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="form-field">
+            <mat-label>Email</mat-label>
+            <input matInput type="email" formControlName="email" required />
+            <mat-error *ngIf="registerForm.get('email')?.hasError('required')">Email is required</mat-error>
+            <mat-error *ngIf="registerForm.get('email')?.hasError('email')">Enter a valid email</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="form-field">
+            <mat-label>Password</mat-label>
+            <input matInput type="password" formControlName="password" required />
+            <mat-error *ngIf="registerForm.get('password')?.hasError('required')">Password is required</mat-error>
+            <mat-error *ngIf="registerForm.get('password')?.hasError('minlength')">Minimum 6 characters</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="form-field">
+            <mat-label>Confirm Password</mat-label>
+            <input matInput type="password" formControlName="confirmPassword" required />
+            <mat-error *ngIf="registerForm.get('confirmPassword')?.hasError('required')">Please confirm your password</mat-error>
+            <mat-error *ngIf="registerForm.hasError('passwordMismatch') && registerForm.get('confirmPassword')?.touched">
+              Passwords do not match
+            </mat-error>
+          </mat-form-field>
+
+          <button mat-raised-button color="primary" class="signup-button" type="submit" [disabled]="registerForm.invalid || isLoading">
+            <span *ngIf="!isLoading">CREATE ACCOUNT</span>
+            <mat-spinner *ngIf="isLoading" diameter="24"></mat-spinner>
+          </button>
+        </form>
+
+        <div class="login-link">
+          <p>Already have an account? <a (click)="navigateToLogin()">Back to Login</a></p>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,191 @@
+:host {
+  --primary-color: #5e5ce6;
+  --primary-color-dark: #4d4ad9;
+  --illustration-bg: #1565C0;
+  --page-bg-color: #f0f2f5;
+}
+
+/* === Page Container === */
+.register-page-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  background: var(--page-bg-color);
+  box-sizing: border-box;
+}
+
+/* === Card Layout === */
+.register-card {
+  display: flex;
+  flex-direction: row-reverse;
+  width: 100%;
+  max-width: 1100px;
+  min-height: 720px;
+  background-color: #fff;
+  border-radius: 24px;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+/* === Right Panel (Form) === */
+.form-panel {
+  flex-basis: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px 50px;
+}
+
+.form-content {
+  width: 100%;
+  max-width: 440px;
+  margin: 0 auto;
+}
+
+/* === Branding & Text === */
+.logo-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 30px;
+}
+
+.logo-header h2 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.logo-header mat-icon {
+  color: var(--primary-color);
+  font-size: 32px;
+}
+
+.welcome-text h3 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.welcome-text p {
+  font-size: 1rem;
+  color: #888;
+  margin-top: 8px;
+  margin-bottom: 30px;
+}
+
+/* === Form Fields (Full Width & Tall) === */
+.form-field {
+  width: 100%;
+}
+
+mat-form-field .mat-mdc-text-field-wrapper {
+  height: 56px;
+  align-items: center;
+}
+
+mat-form-field .mat-mdc-form-field-infix {
+  height: 56px;
+  display: flex;
+  align-items: center;
+}
+
+mat-form-field input.mat-input-element {
+  font-size: 1rem;
+  height: 100%;
+  padding: 0 8px;
+}
+
+/* === Signup Button === */
+.signup-button {
+  width: 100%;
+  height: 56px;
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 1px;
+  border-radius: 12px !important;
+  margin-top: 24px;
+  background-color: var(--primary-color);
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(94, 92, 230, 0.39) !important;
+  transition: all 0.2s ease-in-out;
+}
+
+.signup-button:hover:not([disabled]) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(94, 92, 230, 0.45) !important;
+  background-color: var(--primary-color-dark) !important;
+}
+
+/* === Login Link === */
+.login-link {
+  text-align: center;
+  color: #555;
+  font-size: 0.95rem;
+  margin-top: 30px;
+}
+
+.login-link a {
+  color: var(--primary-color);
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+}
+
+/* === Left Illustration Panel === */
+.illustration-panel {
+  flex-basis: 50%;
+  background-color: var(--illustration-bg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+}
+
+.illustration-content {
+  text-align: center;
+}
+
+.illustration-content h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.3;
+  margin-bottom: 16px;
+}
+
+.illustration-content p {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 380px;
+  line-height: 1.6;
+  margin: 0 auto 30px auto;
+}
+
+.illustration-panel img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+
+/* === Responsive Layout === */
+@media (max-width: 900px) {
+  .illustration-panel {
+    display: none;
+  }
+
+  .form-panel {
+    flex-basis: 100%;
+  }
+
+  .register-card {
+    flex-direction: column;
+    min-height: auto;
+  }
+}
