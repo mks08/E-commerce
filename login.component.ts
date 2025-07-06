@@ -15,7 +15,7 @@ export class LoginComponent {
 
   loginForm: FormGroup;
 
-  //disable button during API call
+  // disable button during API call
   isLoading = false;
 
   constructor(
